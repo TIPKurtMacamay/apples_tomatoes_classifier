@@ -18,7 +18,7 @@ def load_model():
   model=tf.keras.models.load_model('weights-improvement-16-0.89.hdf5')
   return model
 model=load_model()
-st.title("# Apples Tomatoes Classifier")
+st.title("#🍏🍅Apples Tomatoes Classifier")
 file=st.file_uploader("Choose a photo from your computer",type=["jpg","png"])
 
 def import_and_predict(image_data,model):
