@@ -13,6 +13,7 @@ import cv2
 from PIL import Image,ImageOps
 import numpy as np
 import time
+import pandas as pd
 
 @st.cache_resource
 def load_model():
