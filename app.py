@@ -19,7 +19,7 @@ def load_model():
   return model
 model=load_model()
 st.title("🍏🍅Apples Tomatoes Classifier")
-file=st.file_uploader("Choose a image from your computer",type=["jpg","png"])
+file=st.file_uploader("Choose a image of apple or tomato from your computer",type=["jpg","png"])
 
 def import_and_predict(image_data,model):
     size=(128,128)
