@@ -12,6 +12,7 @@ import tensorflow as tf
 import cv2
 from PIL import Image,ImageOps
 import numpy as np
+import time
 
 @st.cache_resource
 def load_model():
@@ -32,6 +33,19 @@ def import_and_predict(image_data,model):
 if file is None:
     st.text("Please upload an image file (Apple or Tomato)")
 else:
+    'Starting a long computation...'
+
+    # Add a placeholder
+    latest_iteration = st.empty()
+    bar = st.progress(0)
+    
+    for i in range(100):
+      # Update the progress bar with each iteration.
+      latest_iteration.text(f'Iteration {i+1}')
+      bar.progress(i + 1)
+      time.sleep(0.1)
+    
+    '...and now we\'re done!'
     image=Image.open(file)
     st.image(image,use_column_width=True)
     prediction=import_and_predict(image,model)
