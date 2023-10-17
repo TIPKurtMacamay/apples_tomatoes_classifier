@@ -54,6 +54,8 @@ else:
     string="OUTPUT : "+class_names[np.argmax(prediction)]
     st.success(string)
 
+    st.text_input("Your name", key="name")
+    st.session_state.name
 
     age = st.slider('How old are you?', 0, 130, 25)
     st.write("I'm ", age, 'years old')
