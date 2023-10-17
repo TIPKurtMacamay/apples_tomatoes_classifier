@@ -54,16 +54,16 @@ else:
     string="OUTPUT : "+class_names[np.argmax(prediction)]
     st.success(string)
 
-    st.text_input("Your name", key="name")
-    st.session_state.name
+st.text_input("Your name", key="name")
+st.session_state.name
 
-    age = st.slider('How old are you?', 0, 130, 25)
-    st.write("I'm ", age, 'years old')
+age = st.slider('How old are you?', 0, 130, 25)
+st.write("I'm ", age, 'years old')
 
-    map_data = pd.DataFrame(
-        np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
-        columns = ['lat', 'lon'])
-    st.map(map_data)
+map_data = pd.DataFrame(
+    np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
+    columns = ['lat', 'lon'])
+st.map(map_data)
 
 if st.checkbox('Show dataframe'):
     chart_data = pd.DataFrame(
