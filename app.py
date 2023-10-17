@@ -53,3 +53,8 @@ else:
     class_names=['Apple', 'Tomato']
     string="OUTPUT : "+class_names[np.argmax(prediction)]
     st.success(string)
+
+
+    age = st.slider('How old are you?', 0, 130, 25)
+    st.write("I'm ", age, 'years old')
+
