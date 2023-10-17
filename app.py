@@ -60,3 +60,8 @@ else:
     age = st.slider('How old are you?', 0, 130, 25)
     st.write("I'm ", age, 'years old')
 
+    map_data = pd.DataFrame(
+        np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
+        columns = ['lat', 'lon'])
+    st.map(map_data)
+
