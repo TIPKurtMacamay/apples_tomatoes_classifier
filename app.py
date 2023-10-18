@@ -74,7 +74,7 @@ else:
         chart_data
 
     history = []  # Initialize an empty history list
-    history.append((image, result))
+    history.append((image))
 
     # Display the history container
     st.header("Prediction History")
