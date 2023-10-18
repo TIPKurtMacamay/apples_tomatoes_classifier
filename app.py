@@ -59,6 +59,10 @@ else:
     # Add a feedback feature
     feedback_options = ['Correct', 'Incorrect']
     feedback = st.radio("Feedback: Was the prediction correct?", feedback_options)
-
+    
     if feedback:
         st.write(f"User feedback: {feedback}")
+
+    # Add a submit button
+    if st.button("Submit"):
+        st.write("Feedback submitted. Thank you!")
