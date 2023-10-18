@@ -74,6 +74,8 @@ else:
     
         chart_data
 
+    history.append((image, result))
+
 st.header("Prediction History")
 for idx, (uploaded_image, prediction) in enumerate(history):
     st.subheader(f"Prediction {idx + 1}")
