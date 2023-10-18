@@ -71,3 +71,9 @@ else:
            columns=['a', 'b', 'c'])
     
         chart_data
+
+st.header("Prediction History")
+for idx, (uploaded_image, prediction) in enumerate(history):
+    st.subheader(f"Prediction {idx + 1}")
+    st.image(uploaded_image, caption=f"Uploaded Image {idx + 1}", use_column_width=True)
+    st.write(f"Prediction: {prediction}")
