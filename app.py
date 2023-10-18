@@ -15,6 +15,8 @@ import numpy as np
 import time
 import pandas as pd
 
+history = []
+
 @st.cache_resource
 def load_model():
   model=tf.keras.models.load_model('weights-improvement-16-0.89.hdf5')
