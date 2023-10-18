@@ -78,17 +78,14 @@ def import_and_predict(image_data, model):
     image = ImageOps.fit(image_data, size, Image.LANCZOS)
     image = np.asarray(image)
     image = image / 255.0
-    img_reshape = np.reshape(image, (1, 224, 224, 3))
+    img_reshape = np.reshape(image, (1, 128, 128, 3))
     prediction = model.predict(img_reshape)
     
     # Store the image and its prediction in the history
     image_history.append((image, class_names[np.argmax(prediction)]))
     
     return prediction
-
-# Rest of the code remains the same
-
-# Display the image history
+    
 st.subheader('Image History and Classifications')
 if image_history:
     for idx, (img, prediction) in enumerate(image_history):
