@@ -54,12 +54,9 @@ else:
     class_names=['Apple', 'Tomato']
     string="OUTPUT : "+class_names[np.argmax(prediction)]
     st.success(string)
-
-    st.text_input("Your name", key="name")
-    st.session_state.name
     
-    age = st.slider('How old are you?', 0, 130, 25)
-    st.write("I'm ", age, 'years old')
+    count = st.slider('How many apples/tomatoes do you want?', 0, 130, 25)
+    st.write('I want ', count, 'apples/tomatoes')
     
     map_data = pd.DataFrame(
         np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
@@ -72,13 +69,30 @@ else:
            columns=['a', 'b', 'c'])
     
         chart_data
+    # Initialize an empty list to store the image history
+image_history = []
 
-    history = []  # Initialize an empty history list
-    history.append((image))
+# Modified predict function to store image and prediction in the history
+def import_and_predict(image_data, model):
+    size = (128, 128)
+    image = ImageOps.fit(image_data, size, Image.LANCZOS)
+    image = np.asarray(image)
+    image = image / 255.0
+    img_reshape = np.reshape(image, (1, 128, 128, 3))
+    prediction = model.predict(img_reshape)
+    
+    # Store the image and its prediction in the history
+    image_history.append((image, class_names[np.argmax(prediction)]))
+    
+    return prediction
 
-    # Display the history container
-    st.header("Prediction History")
-    for idx, (uploaded_image, prediction) in enumerate(history):
-        st.subheader(f"Prediction {idx + 1}")
-        st.image(uploaded_image, caption=f"Uploaded Image {idx + 1}", use_column_width=True)
-        st.write(f"Prediction: {prediction}")
+# Rest of the code remains the same
+
+# Display the image history
+st.subheader('Image History and Classifications')
+if image_history:
+    for idx, (img, prediction) in enumerate(image_history):
+        st.image(img, caption=f'Uploaded Image {idx + 1}', use_column_width=True)
+        st.write('Classification:', prediction)
+else:
+    st.write('No image history yet.')
