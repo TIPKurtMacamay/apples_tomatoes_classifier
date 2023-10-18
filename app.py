@@ -38,31 +38,3 @@ if file is None:
 else:
     st.write('Starting a long computation...')
     
-    # Add a placeholder
-    latest_iteration = st.empty()
-    bar = st.progress(0)
-    
-    for i in range(100):
-        # Update the progress bar with each iteration.
-        latest_iteration.text(f'Iteration {i + 1}')
-        bar.progress(i + 1)
-        time.sleep(0.1)
-    
-    st.write('...and now we\'re done!')
-    image = Image.open(file)
-    st.image(image, use_column_width=True)
-    prediction = import_and_predict(image, model)
-    class_names = ['Apple', 'Tomato']
-    string = "OUTPUT: " + class_names[np.argmax(prediction)]
-    st.success(string)
-
-    # Add a feedback feature
-    feedback_options = ['Correct', 'Incorrect']
-    feedback = st.radio("Feedback: Was the prediction correct?", feedback_options)
-    
-    if feedback:
-        st.write(f"User feedback: {feedback}")
-
-    # Add a submit button
-    if st.button("Submit"):
-        st.write("Feedback submitted. Thank you!")
