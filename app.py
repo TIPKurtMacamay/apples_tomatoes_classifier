@@ -64,3 +64,4 @@ else:
 # Display the prediction
     string = "OUTPUT: " + class_names[np.argmax(prediction)]
     st.success(string)
+    
