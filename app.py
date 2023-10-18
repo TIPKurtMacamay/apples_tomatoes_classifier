@@ -15,7 +15,7 @@ import numpy as np
 import time
 import pandas as pd
 
-history = []
+
 
 @st.cache_resource
 def load_model():
@@ -74,8 +74,10 @@ else:
     
         chart_data
 
-    history.append((image, result))
+history = []  # Initialize an empty history list
+history.append((image, result))
 
+    # Display the history container
 st.header("Prediction History")
 for idx, (uploaded_image, prediction) in enumerate(history):
     st.subheader(f"Prediction {idx + 1}")
