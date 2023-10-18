@@ -74,12 +74,12 @@ else:
     
         chart_data
 
-history = []  # Initialize an empty history list
-history.append((image, result))
+    history = []  # Initialize an empty history list
+    history.append((image, result))
 
     # Display the history container
-st.header("Prediction History")
-for idx, (uploaded_image, prediction) in enumerate(history):
-    st.subheader(f"Prediction {idx + 1}")
-    st.image(uploaded_image, caption=f"Uploaded Image {idx + 1}", use_column_width=True)
-    st.write(f"Prediction: {prediction}")
+    st.header("Prediction History")
+    for idx, (uploaded_image, prediction) in enumerate(history):
+        st.subheader(f"Prediction {idx + 1}")
+        st.image(uploaded_image, caption=f"Uploaded Image {idx + 1}", use_column_width=True)
+        st.write(f"Prediction: {prediction}")
