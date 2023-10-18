@@ -55,13 +55,13 @@ else:
     string="OUTPUT : "+class_names[np.argmax(prediction)]
     st.success(string)
 
-    feedback_options = ['Correct', 'Incorrect']
-    feedback = st.radio("Feedback: Was the prediction correct?", feedback_options)
+feedback_options = ['Correct', 'Incorrect']
+feedback = st.radio("Feedback: Was the prediction correct?", feedback_options)
 
-    if feedback:
-    st.write(f"User feedback: {feedback}")
+if feedback:
+st.write(f"User feedback: {feedback}")
 
 # Display the prediction
-    string = "OUTPUT: " + class_names[np.argmax(prediction)]
-    st.success(string)
+string = "OUTPUT: " + class_names[np.argmax(prediction)]
+st.success(string)
     
