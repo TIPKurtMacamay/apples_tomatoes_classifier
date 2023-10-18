@@ -55,41 +55,4 @@ else:
     string="OUTPUT : "+class_names[np.argmax(prediction)]
     st.success(string)
     
-    count = st.slider('How many apples/tomatoes do you want?', 0, 130, 25)
-    st.write('I want ', count, 'apples/tomatoes')
     
-    map_data = pd.DataFrame(
-        np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
-        columns = ['lat', 'lon'])
-    st.map(map_data)
-    
-    if st.checkbox('Show dataframe'):
-        chart_data = pd.DataFrame(
-           np.random.randn(20, 3),
-           columns=['a', 'b', 'c'])
-    
-        chart_data
-    # Initialize an empty list to store the image history
-image_history = []
-
-# Modified predict function to store image and prediction in the history
-def import_and_predict(image_data, model):
-    size = (128, 128)
-    image = ImageOps.fit(image_data, size, Image.LANCZOS)
-    image = np.asarray(image)
-    image = image / 255.0
-    img_reshape = np.reshape(image, (1, 128, 128, 3))
-    prediction = model.predict(img_reshape)
-    
-    # Store the image and its prediction in the history
-    image_history.append((image, class_names[np.argmax(prediction)]))
-    
-    return prediction
-    
-st.subheader('Image History and Classifications')
-if image_history:
-    for idx, (img, prediction) in enumerate(image_history):
-        st.image(img, caption=f'Uploaded Image {idx + 1}', use_column_width=True)
-        st.write('Classification:', prediction)
-else:
-    st.write('No image history yet.')
