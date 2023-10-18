@@ -33,7 +33,7 @@ def import_and_predict(image_data, model):
     return prediction
 
 if file is None:
-    st.text("Please upload an image file (Apple or Tomato)")
+    st.text("Please upload an image file (Apples or Tomatoes)")
 else:
     st.write('Starting a long computation...')
     
